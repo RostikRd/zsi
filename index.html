@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sk" class="proto-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Urban Canopy — prototyp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../ui-mockup/styles.css" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <div id="toast-root" class="toast-wrap" aria-live="polite"></div>
+
+  <!-- UC-01 Prihlásenie -->
+  <section id="screen-login" class="view-login">
+    <div class="login-card">
+      <h1>Urban Canopy</h1>
+      <p class="hint">Prototyp — správa mestských stromov a AI riziko</p>
+      <form id="form-login" autocomplete="on">
+        <div class="field-row">
+          <label for="login-email">E-mail</label>
+          <input id="login-email" name="email" type="email" required placeholder="arborista@test.sk" />
+        </div>
+        <div class="field-row">
+          <label for="login-pass">Heslo</label>
+          <input id="login-pass" name="password" type="password" required />
+        </div>
+        <div id="login-captcha-row" class="field-row hidden">
+          <label for="login-captcha">Overenie (anti-bot, TC-01-02)</label>
+          <p id="login-captcha-q" class="hint" style="margin:0 0 0.35rem"></p>
+          <input id="login-captcha" type="text" inputmode="numeric" autocomplete="off" placeholder="Odpoveď" />
+        </div>
+        <button type="submit" class="btn btn--accent btn--full">Prihlásiť sa</button>
+        <p id="login-error" class="login-error hidden" role="alert"></p>
+      </form>
+      <div class="login-demo">
+        <strong>Demo účty:</strong><br />
+        arborista (okrsok Centrum): <code>arborista@test.sk</code> / <code>heslo123</code><br />
+        arborista (okrsok Sever): <code>arborista.sever@test.sk</code> / <code>heslo123</code><br />
+        dispečer: <code>dispatcher@test.sk</code> / <code>heslo123</code><br />
+        admin: <code>admin@test.sk</code> / <code>admin123</code><br />
+        <a href="public-report.html" style="color:var(--accent)">Občianske hlásenie (verejný formulár)</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="screen-app" class="app hidden">
+    <aside class="rail" aria-label="Hlavná navigácia">
+      <div class="rail__mark">
+        <span class="rail__logo" aria-hidden="true"></span>
+        <span class="rail__title">Canopy</span>
+      </div>
+      <nav class="rail__nav" id="rail-nav">
+        <a class="rail__link rail__link--active" href="#/overview" data-route="overview">Prehľad</a>
+        <a class="rail__link" href="#/trees" data-route="trees">Stromy</a>
+        <a class="rail__link" href="#/inspections" data-route="inspections">Kontroly</a>
+        <a class="rail__link" href="#/risk" data-route="risk">AI riziko</a>
+        <a class="rail__link" href="#/orders" data-route="orders">Príkazy</a>
+        <a class="rail__link" href="#/export" data-route="export">Export CSV</a>
+        <a class="rail__link hidden" href="#/admin/users" data-route="admin" id="rail-admin">Správa používateľov</a>
+      </nav>
+      <div class="rail__foot">
+        <button type="button" class="rail__settings" id="btn-logout">Odhlásiť sa</button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="bar">
+        <div class="bar__search">
+          <span class="bar__search-icon" aria-hidden="true"></span>
+          <input type="search" id="global-search" placeholder="Hľadať strom, ID, druh…" />
+        </div>
+        <div class="bar__meta">
+          <span class="bar__pill bar__pill--live">Prototyp</span>
+          <div class="bar__user">
+            <span class="bar__avatar" id="bar-avatar">?</span>
+            <div class="bar__user-text">
+              <span class="bar__name" id="bar-name">—</span>
+              <span class="bar__role" id="bar-role">—</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div id="main-workspace" class="workspace">
+        <!-- dynamický obsah z app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bez type="module": pri file:// moduly často nebežia (CORS), login by nefungoval -->
+  <script src="app.js"></script>
+</body>
+</html>
