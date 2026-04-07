@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Urban Canopy — UI mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="Hlavná navigácia">
+      <div class="rail__mark">
+        <span class="rail__logo" aria-hidden="true"></span>
+        <span class="rail__title">Canopy</span>
+      </div>
+      <nav class="rail__nav">
+        <a class="rail__link rail__link--active" href="#">
+          <span class="rail__ico" data-i="map"></span>
+          Prehľad
+        </a>
+        <a class="rail__link" href="#">
+          <span class="rail__ico" data-i="tree"></span>
+          Stromy
+        </a>
+        <a class="rail__link" href="#">
+          <span class="rail__ico" data-i="clip"></span>
+          Kontroly
+        </a>
+        <a class="rail__link" href="#">
+          <span class="rail__ico" data-i="ai"></span>
+          AI riziko
+        </a>
+        <a class="rail__link" href="#">
+          <span class="rail__ico" data-i="task"></span>
+          Príkazy
+        </a>
+      </nav>
+      <div class="rail__foot">
+        <button type="button" class="rail__settings">
+          <span class="rail__ico" data-i="gear"></span>
+          Nastavenia
+        </button>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="bar">
+        <div class="bar__search">
+          <span class="bar__search-icon" aria-hidden="true"></span>
+          <input type="search" placeholder="Hľadať strom, ulicu, ID…" />
+          <kbd class="bar__kbd">⌘K</kbd>
+        </div>
+        <div class="bar__meta">
+          <span class="bar__pill bar__pill--live">Živá mapa</span>
+          <button type="button" class="bar__notify" aria-label="Notifikácie">3</button>
+          <div class="bar__user">
+            <span class="bar__avatar">MK</span>
+            <div class="bar__user-text">
+              <span class="bar__name">M. Kováč</span>
+              <span class="bar__role">Arborista</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <section class="canvas" aria-label="Mapa">
+          <div class="map">
+            <div class="map__grid"></div>
+            <div class="map__glow"></div>
+            <div class="map__pin map__pin--high" style="left: 44%; top: 38%"></div>
+            <div class="map__pin map__pin--mid" style="left: 58%; top: 52%"></div>
+            <div class="map__pin map__pin--low" style="left: 32%; top: 58%"></div>
+            <div class="map__hud">
+              <span class="map__hud-title">Mestská zeleň</span>
+              <span class="map__hud-sub">12 stromov v zobrazení · 3 upozornenia</span>
+            </div>
+            <div class="map__tools">
+              <button type="button" class="map__tool" title="Priblížiť">+</button>
+              <button type="button" class="map__tool" title="Oddialiť">−</button>
+              <button type="button" class="map__tool map__tool--wide">Vrstvy</button>
+            </div>
+            <div class="map__legend">
+              <span class="map__leg-item"><i class="map__dot map__dot--high"></i> Vysoké riziko</span>
+              <span class="map__leg-item"><i class="map__dot map__dot--mid"></i> Stredné</span>
+              <span class="map__leg-item"><i class="map__dot map__dot--low"></i> Nízke</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="drawer">
+          <div class="drawer__head">
+            <h1 class="drawer__h">Filtre a zoznam</h1>
+            <p class="drawer__hint">Vyberte strom na mape alebo zo zoznamu</p>
+          </div>
+
+          <div class="filters">
+            <div class="field">
+              <label for="z">Okrsok</label>
+              <input id="z" type="text" placeholder="napr. Centrum" />
+            </div>
+            <div class="field field--half">
+              <label for="r">Riziko</label>
+              <select id="r">
+                <option>Všetky</option>
+                <option>Vysoké</option>
+                <option>Stredné</option>
+                <option>Nízke</option>
+              </select>
+            </div>
+            <div class="field field--half">
+              <label for="s">Druh</label>
+              <input id="s" type="text" placeholder="lipa, dub…" />
+            </div>
+            <button type="button" class="btn btn--accent">Použiť filtre</button>
+          </div>
+
+          <div class="list-head">
+            <span class="list-head__title">Výsledky</span>
+            <span class="list-head__count">12</span>
+          </div>
+          <ul class="trees">
+            <li class="trees__item trees__item--active">
+              <div class="trees__icon trees__icon--alert" aria-hidden="true"></div>
+              <div class="trees__body">
+                <div class="trees__row">
+                  <span class="trees__id">T-2041</span>
+                  <span class="tag tag--bad">AI vysoké</span>
+                </div>
+                <span class="trees__name">Lipa malolistá</span>
+                <span class="trees__addr">Hlavná 12</span>
+              </div>
+            </li>
+            <li class="trees__item">
+              <div class="trees__icon" aria-hidden="true"></div>
+              <div class="trees__body">
+                <div class="trees__row">
+                  <span class="trees__id">T-1988</span>
+                  <span class="tag tag--ok">AI nízke</span>
+                </div>
+                <span class="trees__name">Javor horský</span>
+                <span class="trees__addr">Parková ul.</span>
+              </div>
+            </li>
+            <li class="trees__item">
+              <div class="trees__icon trees__icon--warn" aria-hidden="true"></div>
+              <div class="trees__body">
+                <div class="trees__row">
+                  <span class="trees__id">T-2102</span>
+                  <span class="tag tag--warn">Kontrola</span>
+                </div>
+                <span class="trees__name">Dub letný</span>
+                <span class="trees__addr">Nám. SNP</span>
+              </div>
+            </li>
+          </ul>
+        </aside>
+
+        <aside class="inspector">
+          <div class="inspector__top">
+            <div>
+              <p class="inspector__label">Vybraný strom</p>
+              <h2 class="inspector__title">T-2041 · Lipa malolistá</h2>
+            </div>
+            <span class="status status--on">Aktívny záznam</span>
+          </div>
+
+          <dl class="facts">
+            <div class="facts__row"><dt>Poloha</dt><dd>48.7200, 21.2600</dd></div>
+            <div class="facts__row"><dt>DBH</dt><dd>42 cm</dd></div>
+            <div class="facts__row"><dt>Posledná synchronizácia</dt><dd>04. 04. 2026, 09:12</dd></div>
+          </dl>
+
+          <article class="panel panel--risk">
+            <header class="panel__head">
+              <h3 class="panel__h">Predikcia rizika (AI)</h3>
+              <span class="panel__model">v2.3</span>
+            </header>
+            <div class="risk">
+              <div class="risk__ring" style="--p: 82">
+                <span class="risk__value">0,82</span>
+                <span class="risk__cap">skóre</span>
+              </div>
+              <div class="risk__side">
+                <span class="risk__badge">Vysoké riziko</span>
+                <p class="risk__text">Koruna s nepravidelným odtokom, mierny sklon kmeňa (~4°). Odporúča sa obhliadka do 7 dní.</p>
+                <ul class="risk__bullets">
+                  <li>Stabilita: pozor</li>
+                  <li>Zdravotný stav: stredný</li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel__actions">
+              <button type="button" class="btn btn--ghost">Prepočítať</button>
+              <button type="button" class="btn btn--accent">Potvrdiť alebo override</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <header class="panel__head">
+              <h3 class="panel__h">Kontrola</h3>
+              <time class="panel__time" datetime="2026-03-10">10. 03. 2026</time>
+            </header>
+            <p class="panel__p">Orez koruny do 30 dní — prioritné vetvy nad chodníkom.</p>
+            <button type="button" class="btn btn--line">+ Nová kontrola</button>
+          </article>
+
+          <article class="panel panel--muted">
+            <header class="panel__head">
+              <h3 class="panel__h">Pracovný príkaz</h3>
+            </header>
+            <p class="panel__p panel__p--dim">Žiadny otvorený príkaz pre tento strom.</p>
+            <button type="button" class="btn btn--accent btn--full">Vytvoriť príkaz</button>
+          </article>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    Mockup ZSI — Urban tree management + AI risk prediction. Statický návrh pre dokumentáciu.
+  </footer>
+</body>
+</html>
